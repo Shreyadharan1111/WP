@@ -1,0 +1,16 @@
+class Maths:
+    """Class to implement power function pow(x, n)"""
+
+    @staticmethod
+    def pow(x, n):
+        if n == 0:
+            return 1
+        if n < 0:
+            return 1 / Maths.pow(x, -n)
+        return x * Maths.pow(x, n - 1)
+
+
+if __name__ == '__main__':
+    x = float(input("Enter the Base: "))  # Supports decimals
+    n = int(input("Enter the Exponent: "))
+    print(f"The value is {Maths.pow(x, n)}")
