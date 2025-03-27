@@ -1,0 +1,24 @@
+class PowerSetClass:
+    """This class is to find unique possible subsets"""
+    
+    def __init__(self, arr):
+        self.arr = arr
+
+    def power_set_generator(self):
+        power_set = []
+        for i in range(2 ** len(self.arr)):  # Loop through 2^n subsets
+            subset = []
+            for j in range(len(self.arr)):
+                if i & (1 << j):  # Check if jth element is included in subset
+                    subset.append(self.arr[j])
+            if subset not in power_set:  # Avoid duplicates
+                power_set.append(subset)
+        return power_set
+
+
+if __name__ == '__main__':
+    print("Enter the numbers in the array with space separation:")
+    arr = [int(i) for i in input().split()]  # Convert input to integers
+    psc = PowerSetClass(arr)
+    power_set = psc.power_set_generator()
+    print("Unique Subsets:", power_set)
