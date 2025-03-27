@@ -1,0 +1,25 @@
+class PairTargetSum:
+    """Finds a pair of indices whose sum equals the target."""
+    
+    def __init__(self, arr, target):
+        self.arr = arr
+        self.target = target
+
+    def pair_finder(self):
+        seen = {}  # Dictionary to store seen numbers and their indices
+        for i, num in enumerate(self.arr):
+            complement = self.target - num  # Required number to form the pair
+            if complement in seen:
+                print(f"Pair found at indices: {seen[complement]}, {i}")
+                return
+            seen[num] = i  # Store index of the current number
+        print("Pair not found")
+
+
+if __name__ == '__main__':
+    print("Enter the numbers in the array with space separation:")
+    arr = [int(i) for i in input().split()]
+    print("Enter the target sum:")
+    target = int(input())
+    pts = PairTargetSum(arr, target)
+    pts.pair_finder()
